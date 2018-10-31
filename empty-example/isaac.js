@@ -130,16 +130,15 @@ function Bullet(){
 
 
 function Monster(){
+	this.x = 0;
 	this.posicion = function() {
 		this.a = random(width);
 		this.b = random(height);
-		if (dist(this.a,this.b,player.x,player.y) > 200){
-			this.x = this.a;
-			this.y = this.b;
-		} else {
+		 else {
 			this.posicion();
 		}
 	}
+	console.log(this.x);
 	this.speed = 2;
 	this.r = 30;
 	var num = 0;
@@ -152,9 +151,8 @@ function Monster(){
 		var y1 = this.y;
 		var x2 = player.x;
 		var y2 = player.y;
-		var speed = this.speed;
 
-		// Seguimiento
+		// Seguimiento 
 		if (x1 > x2){
 			// Sector II y III
 			x = x1 - x2;
@@ -163,44 +161,44 @@ function Monster(){
 				y = y2 - y1;
 				if(x < y){
 					// Sector II-1 // // // // // // // // // // 
-					num = map(x, 0, y, 0, speed);
-					y1 = y1 + speed;
+					num = map(x, 0, y, 0, this.speed);
+					y1 = y1 + this.speed;
 					x1 = x1 - num;
-				} else if (x > y){
+				}/* else if (x > y){
 					// Sector II-2 // // // // // // // // // // 
-					num = map(y, 0, x, 0, speed);
-					x1 = x1 - speed;
+					num = map(y, 0, x, 0, this.speed);
+					x1 = x1 - this.speed;
 					y1 = y1 + num;
-				}
-			} else if (y1 > y2) {
+				}*/
+			}/* else if (y1 > y2) {
 				// Sector III
 				y = y1 - y2;
 				if(x < y){
 					// Sector III-1 // // // // // // // // // // 
-					num = map(x, 0, y, 0, speed);
-					y1 = y1 - speed;
+					num = map(x, 0, y, 0, this.speed);
+					y1 = y1 - this.speed;
 					x1 = x1 - num;
 				} else if (x > y){
 					// Sector III-2 // // // // // // // // // // 
-					num = map(y, 0, x, 0, speed);
-					x1 = x1 - speed;
+					num = map(y, 0, x, 0, this.speed);
+					x1 = x1 - this.speed;
 					y1 = y1 - num;
 				}
-			}
-		} else if (x1 < x2) {
+			}*/
+		}/* else if (x1 < x2) {
 			x = x2 - x1;
 			if (y1 > y2) {
 				// Sector IV 
 				y = y1 - y2;
 				if(x < y){
 					// Sector IV-1 // // // // // // // // // // 
-					num = map(x, 0, y, 0, speed);
-					y1 = y1 - speed;
+					num = map(x, 0, y, 0, this.speed);
+					y1 = y1 - this.speed;
 					x1 = x1 + num;
 				} else if (x > y){
 					// Sector IV-2 // // // // // // // // // // 
-					num = map(y, 0, x, 0, speed);
-					x1 = x1 + speed;
+					num = map(y, 0, x, 0, this.speed);
+					x1 = x1 + this.speed;
 					y1 = y1 - num;
 				}
 			} else if (y1 < y2){
@@ -208,25 +206,25 @@ function Monster(){
 				y = y2 - y1;
 				if(x > y){
 					// Sector I-1 // // // // // // // // // // 
-					num = map(y, 0, x, 0, speed);
-					x1 = x1 + speed;
+					num = map(y, 0, x, 0, this.speed);
+					x1 = x1 + this.speed;
 					y1 = y1 + num;
 				} else if (x < y){
 					// Sector I-2 // // // // // // // // // // 
-					num = map(x, 0, y, 0, speed);
-					y1 = y1 + speed;
+					num = map(x, 0, y, 0, this.speed);
+					y1 = y1 + this.speed;
 					x1 = x1 + num;
 				}
 			}
-		}
+		}*/
 		//follow(this.x, this.y, this.speed, player.x, player.y);
-		//console.log(this.x);
+		text('sda',10,20);
+		text(y2,10,50)
 		// Muerte
 		if(dist(x1,y1,x2,y2) < this.r){
 			f = frameCount;
 			pausa = true;
 		}
-		//console.log(parseInt(x1))
 		
 		fill(0);
 		ellipse(x1, y1,this.r, this.r);
